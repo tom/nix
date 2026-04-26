@@ -15,7 +15,6 @@
       environment.systemPackages =
         [
 	  pkgs.alacritty
-	  pkgs.ghostty
 	  pkgs.vim
           pkgs.neovim
         ];
