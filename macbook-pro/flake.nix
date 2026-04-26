@@ -14,14 +14,15 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [
-	  pkgs.alacritty
 	  pkgs.vim
           pkgs.neovim
+	  pkgs.alacritty
         ];
 
-      fonts.packages = [
-        (pkgs.nerdfonts.override {fonts = ["JetBrains Mono"];})
+      fonts.packages = with pkgs; [
+        nerd-fonts.jetbrains-mono
       ];
+
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
