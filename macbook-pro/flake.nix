@@ -41,6 +41,12 @@
 	  "ghostty"
 	];
 	onActivation.cleanup = "zap";
+	onActivation.autoUpdate = true;
+	onActivation.upgrade = true;
+      };
+
+      system.defaults = {
+        dock.autohide = true;
       };
 
 
