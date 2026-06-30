@@ -1,6 +1,10 @@
 { pkgs, ... }: {
   home.stateVersion = "26.05";
 
+  imports = [
+    ./zellij.nix
+  ];
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -55,17 +59,6 @@
     };
   };
 
-  programs.zellij = {
-    enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    enableZshIntegration = true;
-    settings = {
-      theme = "nord";
-      copy_command = "pbcopy";
-    };
-  };
-
   programs.eza = {
     enable = true;
     colors = "always";
@@ -79,31 +72,19 @@
 
   home.file = {
     ".config/ghostty/config".text = ''
-      font-family = "Liga SFMono Nerd Font"
+      font-family = "JetBrainsMono Nerd Font Mono"
       font-style="medium"
-      font-size = "14"
+      font-size = "13"
       theme = "Nord"
       font-thicken=true
       macos-option-as-alt=right
     '';
-  };
 
-  #  programs.ghostty = {
-  #  enable = true;
-  #  enableBashIntegration = true;
-  #  enableFishIntegration = true;
-  #  enableZshIntegration = true;
-  #  installBatSyntax = true;
-  #  installVimSyntax = true;
-  #  settings = {
-  #    font-family = "Liga SFMono Nerd Font";
-  #    font-style="medium";
-  #    font-size = "14";
-  #    theme = "Nord";
-  #    font-thicken=true;
-  #    macos-option-as-alt= "right";
-  #  };
-  #};
+    ".config/bottom/bottom.toml".text = ''
+      [styles]
+      theme = "nord"
+    '';
+  };
 
   home.packages = with pkgs; [
     vim
@@ -111,6 +92,7 @@
     curl
     fzf
     bat
+    bottom
   ];
 
   programs.home-manager.enable = true;
